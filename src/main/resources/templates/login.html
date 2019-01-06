@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="html-login" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header"></div>
+    <link href="../../webapp/resources/css/login.css" th:href="@{/css/login.css}" type="text/css" media="all" rel="stylesheet" />
+    <script href="../../webapp/resources/js/login.js" th:href="@{/js/login.js}" type="text/javascript"></script>
+
+</head>
+<body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="wrap">
+                            <p class="form-title">Ingresar</p>
+                            <form th:action="@{/login}" method="post" class="login">
+                                <input name="username" type="text" placeholder="Usuario" required="required" />
+                                <input name="password" type="password" placeholder="Contraseña" required="required" />
+                                <input type="submit" value="Acceder" class="btn btn-success btn-sm" />
+                                <div class="remember-forgot">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" />Recordarme
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 forgot-pass-content">
+                                            <a href="javascription:void(0)" class="forgot-pass">Olvido su contraseña</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="pr-wrap">
+                        <div class="pass-reset">
+                            <label>
+                                Enter the email you signed up with</label>
+                            <input type="email" placeholder="Email" />
+                            <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</body>
+
+</html>
+
