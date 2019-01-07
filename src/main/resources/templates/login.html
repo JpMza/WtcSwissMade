@@ -11,10 +11,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wrap">
-                            <p class="form-title">Ingresar</p>
+                            <p class="form-title" th:text="#{login.access}"></p>
                             <form th:action="@{/login}" method="post" class="login">
-                                <input name="username" type="text" placeholder="Usuario" required="required" />
-                                <input name="password" type="password" placeholder="Contraseña" required="required" />
+                                <input name="username" type="text" th:placeholder="#{login.user}" required="required" />
+                                <input name="password" type="password" th:placeholder="#{login.password}" required="required" />
                                 <input type="submit" value="Acceder" class="btn btn-success btn-sm" />
                                 <div class="remember-forgot">
                                     <div class="row">
