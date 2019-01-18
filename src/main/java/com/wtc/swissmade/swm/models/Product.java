@@ -29,6 +29,9 @@ public class Product {
     @Column(name = "diameter")
     private int diameter;
 
+    @Column(name = "width")
+    private int width;
+
     @Column(name = "movement_type", columnDefinition = "enum('mechanic','automatic','quartz','digital')")
     private String movementType;
 
@@ -123,6 +126,14 @@ public class Product {
 
     public void setCristalType(String cristalType) {
         this.cristalType = cristalType;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
     }
 
     public String getBandType() {
