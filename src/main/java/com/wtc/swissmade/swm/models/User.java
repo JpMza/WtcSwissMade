@@ -16,6 +16,13 @@ public class User {
     private String name;
     @Column(name = "password", unique = true)
     private String password;
+    @Column(name = "email")
+    private String email;
+
+    private boolean enabled;
+
+    @OneToOne(mappedBy = "users")
+    private Customer customer;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
@@ -57,6 +64,30 @@ public class User {
         this.roles = roles;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -79,5 +110,6 @@ public class User {
         return Objects.equals(id, user.id)
                 && Objects.equals(name, user.name)
                 && Objects.equals(password, user.password);
+
     }
 }

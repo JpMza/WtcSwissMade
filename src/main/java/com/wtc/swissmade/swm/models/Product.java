@@ -1,6 +1,9 @@
 package com.wtc.swissmade.swm.models;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,6 +24,7 @@ public class Product {
     private String brand;
 
     @Column(name = "price", precision = 20, scale = 2)
+    @NotNull(message = "Por favor intgrese un precio")
     private BigDecimal price;
 
     @Column(name = "weight")
@@ -43,6 +47,18 @@ public class Product {
 
     @Column(name =  "band_type")
     private String bandType;
+
+    @Column(name = "manufacturer")
+    private String productManufacturer;
+
+    @Column(name = "description")
+    private String productDescription;
+
+    @Column(name = "unit")
+    private String unitStock;
+
+    @Transient
+    private MultipartFile productImage;
 
     @Column(name = "created_at", nullable = true, columnDefinition="DATETIME")
     private String created_at;
@@ -174,6 +190,38 @@ public class Product {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getProductManufacturer() {
+        return productManufacturer;
+    }
+
+    public void setProductManufacturer(String productManufacturer) {
+        this.productManufacturer = productManufacturer;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public String getUnitStock() {
+        return unitStock;
+    }
+
+    public void setUnitStock(String unitStock) {
+        this.unitStock = unitStock;
+    }
+
+    public MultipartFile getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(MultipartFile productImage) {
+        this.productImage = productImage;
     }
 
     @PrePersist
