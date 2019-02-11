@@ -10,7 +10,6 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.thymeleaf.templateresolver.UrlTemplateResolver;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
@@ -35,10 +34,6 @@ public class MvcConfig implements WebMvcConfigurer {
     public BCryptPasswordEncoder passwordEncoder() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
-    }
-    @Bean
-    public UrlTemplateResolver urlTemplateResolver() {
-        return new UrlTemplateResolver();
     }
 
     @Configuration
