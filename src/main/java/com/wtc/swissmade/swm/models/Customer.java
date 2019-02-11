@@ -1,5 +1,7 @@
 package com.wtc.swissmade.swm.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -39,6 +41,23 @@ public class Customer {
     @ElementCollection
     private List<String> phoneNumbers = new ArrayList<String>();
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "shippingAddressId")
+    private ShippingAddress shippingAddress;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "billingAddressId")
+    private BillingAddress billingAddress;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "userId")
+    private User users;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "cartId")
+
+    @JsonIgnore
+    private Cart cart;
     public Long getId() {
         return id;
     }
@@ -109,5 +128,37 @@ public class Customer {
 
     public void setPhoneNumbers(List<String> phoneNumbers) {
         this.phoneNumbers = phoneNumbers;
+    }
+
+    public ShippingAddress getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(ShippingAddress shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+
+    public BillingAddress getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(BillingAddress billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public User getUsers() {
+        return users;
+    }
+
+    public void setUsers(User users) {
+        this.users = users;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 }

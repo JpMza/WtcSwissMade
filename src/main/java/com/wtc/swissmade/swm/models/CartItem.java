@@ -1,9 +1,17 @@
 package com.wtc.swissmade.swm.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "cartitem")
@@ -17,7 +25,7 @@ public class CartItem implements Serializable {
 
 	private int quality;
 
-	private double price;
+	private BigDecimal price;
 
 	@ManyToOne
 	@JoinColumn(name = "productId")
@@ -44,11 +52,11 @@ public class CartItem implements Serializable {
 		this.quality = quality;
 	}
 
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

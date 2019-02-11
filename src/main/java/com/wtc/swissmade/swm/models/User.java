@@ -11,7 +11,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    private String emailId;
     @Column(name = "name", nullable = false, unique = true)
     private String name;
     @Column(name = "password", unique = true)
@@ -21,8 +21,6 @@ public class User {
 
     private boolean enabled;
 
-    @OneToOne(mappedBy = "users")
-    private Customer customer;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
@@ -31,6 +29,9 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "role_id",
                     referencedColumnName = "id")})
     private List<Role> roles;
+
+    @OneToOne(mappedBy = "users")
+    private Customer customer;
 
     public long getId() {
         return id;
@@ -86,6 +87,14 @@ public class User {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
     @Override
