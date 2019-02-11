@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="onliqst" />
+        <module name="wtcsm" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="onliqst" target="1.8" />
+      <module name="wtcsm" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

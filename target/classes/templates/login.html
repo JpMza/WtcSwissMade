@@ -11,22 +11,22 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wrap">
-                            <p class="form-title">Ingresar</p>
+                            <p class="form-title" th:text="#{login.access}"></p>
                             <form th:action="@{/login}" method="post" class="login">
-                                <input name="username" type="text" placeholder="Usuario" required="required" />
-                                <input name="password" type="password" placeholder="Contraseña" required="required" />
-                                <input type="submit" value="Acceder" class="btn btn-success btn-sm" />
+                                <input name="username" type="text" th:placeholder="#{login.user}" required="required" />
+                                <input name="password" type="password" th:placeholder="#{login.password}" required="required" />
+                                <input type="submit" th:value="#{login.access}" class="btn btn-success btn-sm" />
                                 <div class="remember-forgot">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" />Recordarme
+                                                    <input type="checkbox" th:text="#{login.rememberme}" />
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 forgot-pass-content">
-                                            <a href="javascription:void(0)" class="forgot-pass">Olvido su contraseña</a>
+                                            <a href="javascription:void(0)" class="forgot-pass" th:text="#{login.forgot.password}"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -35,9 +35,8 @@
                     </div>
                     <div class="pr-wrap">
                         <div class="pass-reset">
-                            <label>
-                                Enter the email you signed up with</label>
-                            <input type="email" placeholder="Email" />
+                            <label th:text="#{login.mail}"></label>
+                            <input type="email" th:placeholder="#{login.signedup.mail}" />
                             <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
                         </div>
                     </div>
