@@ -27,7 +27,7 @@ public class Cart implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String cartId;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "customerId")
@@ -40,12 +40,12 @@ public class Cart implements Serializable {
 
     private BigDecimal totalPrice;
 
-    public String getCartId() {
-        return cartId;
+    public Long getCartId() {
+        return id;
     }
 
-    public void setCartId(String cartId) {
-        this.cartId = cartId;
+    public void setCartId(Long cartId) {
+        this.id = cartId;
     }
 
     public Customer getCustomer() {

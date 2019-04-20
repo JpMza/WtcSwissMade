@@ -1,48 +1,33 @@
 package com.wtc.swissmade.swm.services;
 
-import com.wtc.swissmade.swm.dao.ProductDao;
 import com.wtc.swissmade.swm.models.Product;
+import com.wtc.swissmade.swm.repositories.ProductRepository;
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+@Service
+@Transactional
+public class ProductServiceImpl {
 
-@Service(value="productService")
-public class ProductServiceImpl implements ProductService {
+    // productRepository constructor injection
+    @Autowired
+    private ProductRepository productRepository;
 
-	@Autowired
-	private ProductDao productDao;
+    @Override
+    public Iterable<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
 
-	public ProductDao getProductDao() {
-		return productDao;
-	}
+    @Override
+    public Product getProduct(long id) {
+        return productRepository
+                .findById(id).orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+    }
 
-	public void setProductDao(ProductDao productDao) {
-		this.productDao = productDao;
-	}
-
-	@Transactional
-	public List<Product> getAllProducts() {
-		return productDao.getAllProducts();
-	}
-
-	
-	public Product getProductById(String productId) {
-		return productDao.getProductById(productId);
-	}
-
-	
-	public void deleteProduct(String productId) {
-		productDao.deleteProduct(productId);
-	}
-	
-	public void addProduct(Product product){
-		productDao.addProduct(product);
-	}
-	
-	public void editProduct(Product product){
-		productDao.editProduct(product);
-	}
-
+    @Override
+    public Product save(Product product) {
+        return productRepository.save(product);
+    }
 }
